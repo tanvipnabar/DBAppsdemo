@@ -5,15 +5,6 @@
     var ctx = canvas.getContext("2d")
     var particleSystem = null
 
-    var palette = {
-      "Africa": "#D68300",
-      "Asia": "#4D7A00",
-      "Europe": "#6D87CF",
-      "North America": "#D4E200",
-      "Oceania": "#4F2170",
-      "South America": "#CD2900"
-    }
-
     var that = {
       init:function(system){
         particleSystem = system
@@ -29,7 +20,7 @@
 
         ctx.clearRect(0,0, canvas.width, canvas.height)
         ctx.strokeStyle = "#d3d3d3"
-        ctx.lineWidth = 1
+        ctx.lineWidth = 2
         ctx.beginPath()
         particleSystem.eachEdge(function(edge, pt1, pt2){
           // edge: {source:Node, target:Node, length:#, data:{}}
@@ -46,9 +37,7 @@
 
             if (!isNaN(weight)) ctx.lineWidth = weight
             
-            if (edge.source.data.region==edge.target.data.region){
-              ctx.strokeStyle = palette[edge.source.data.region]
-            }
+            
             
             // if (color) ctx.strokeStyle = color
             ctx.fillStyle = null
@@ -97,7 +86,7 @@
             
             // if (node.data.region) ctx.fillStyle = palette[node.data.region]
             // else ctx.fillStyle = "#888888"
-            ctx.fillStyle = "#888888"
+            ctx.fillStyle = "#00000"
 
             // ctx.fillText(label||"", pt.x, pt.y+4)
             ctx.fillText(label||"", pt.x, pt.y+4)
@@ -174,18 +163,13 @@
     }
 
   	var _maps = {
-      usofa:{title:"United States", p:{stiffness:600}, source:_sources.states},
-      africa:{title:"Africa", p:{stiffness:300}, source:_sources.nations},
-      asia:{title:"Asia", p:{stiffness:500}, source:_sources.nations},
-      europe:{title:"Europe", p:{stiffness:300}, source:_sources.nations},
-      mideast:{title:"Middle East", p:{stiffness:500}, source:_sources.nations},
-      risk:{title:"Risk", p:{stiffness:400}, source:_sources.risk}
+      applications:{title:"applications", p:{stiffness:600}, source:_sources.states},
     }
 
     var sys = arbor.ParticleSystem(4000, 500, 0.5, 55);
     sys.renderer = Renderer("#viewport") // our newly created renderer will have its .init() method called shortly by sys...
 
-    $.getJSON("data/usofa.json",function(data){
+    $.getJSON("data/applications.json",function(data){
       // load the raw data into the particle system as is (since it's already formatted correctly for .merge)
       var nodes = data.nodes
       $.each(nodes, function(name, info){
@@ -193,8 +177,8 @@
       })
 
       sys.merge({nodes:nodes, edges:data.edges})
-      sys.parameters(_maps['usofa'].p)
-      $("#dataset").html(_maps['usofa'].source)
+      sys.parameters(_maps['applications'].p)
+      $("#dataset").html(_maps['applications'].source)
     })
 
 

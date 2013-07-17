@@ -17,9 +17,8 @@ fi
 
 echo "Starting local http server (ctrl-c to exit)"
 echo ""
-echo "  Echolalia: http://127.0.0.1:$PORT/demos/echolalia/"
-echo "  HalfViz:   http://127.0.0.1:$PORT/demos/halfviz/"
 echo "  Atlas:     http://127.0.0.1:$PORT/demos/atlas/"
 echo "  DBSAdemo:  http://127.0.0.1:$PORT/demos/DBSAdemo/"
+echo "  D3:        http://127.0.0.1:$PORT/demos/D3/"
 echo ""
 python -m SimpleHTTPServer $PORT
