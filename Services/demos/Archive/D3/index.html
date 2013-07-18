@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.node text {
+  pointer-events: none;
+  font: 10px sans-serif;
+  font-weight: bold;
+  padding-left: 10px;
+}
+
+.link {
+  stroke: #ccc;
+}
+
+</style>
+<body>
+<script src="scripts/d3.js"></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.2.1/underscore-min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.5.3/backbone-min.js'></script>
+<script src="scripts/applications.js"></script>
+
+<script>
+
+initApplications();
+
+var width = 1920,
+    height = 1000;
+
+var color = d3.scale.category20();
+
+var force = d3.layout.force()
+    .gravity(.5)
+    .distance(500)
+    .charge(-1000)
+    .size([width, height]);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+d3.json("data/miserables.json", function(error, graph) {
+  force
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .start();
+
+  var link = svg.selectAll(".link")
+      .data(graph.links)
+    .enter().append("line")
+      .attr("class", "link")
+      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+
+  var node = svg.selectAll(".node")
+      .data(graph.nodes)
+    .enter().append("g")
+      .attr("class", "node")
+      .attr("r", 5)
+      //.style("fill", function(d) { return color(d.group); })
+      .call(force.drag);
+
+  node.append("image")
+      .attr("xlink:href", "http://openiconlibrary.sourceforge.net/gallery2/open_icon_library-full/icons/png/32x32/devices/computer-6.png")
+      .attr("x", -16)
+      .attr("y", -16)
+      .attr("width", 32)
+      .attr("height", 32);
+
+  node.append("text")
+      .attr("dx", 15)
+      .attr("dy", ".35em")
+      .attr("fill", "#00000")
+      .text(function(d) { return d.name });
+
+  force.on("tick", function() {
+    link.attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+  });
+});
+
+</script>
