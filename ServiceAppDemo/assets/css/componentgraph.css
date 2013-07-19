@@ -1,0 +1,33 @@
+path.link {
+  fill: none;
+  stroke: #736B6B;
+  stroke-width: 2.5px;
+}
+
+marker#open {
+  fill: #423F3F;
+}
+
+circle {
+  fill: #ccc;
+  stroke: #333;
+  stroke-width: 1.5px;
+}
+
+.node text {
+  pointer-events: none;
+  font: 10px sans-serif;
+  font-weight: bold;
+  padding-left: 10px;
+}
+
+text {
+  font: 10px sans-serif;
+  pointer-events: none;
+}
+
+text.shadow {
+  stroke: #fff;
+  stroke-width: 3px;
+  stroke-opacity: .8;
+}
