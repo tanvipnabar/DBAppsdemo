@@ -7,8 +7,10 @@ $(function() {
         .distance(100)
         .charge(-1200)
         .size([width, height]);
-
+        
     var svg = d3.select("#components-graph").append("svg:svg")
+        .attr("viewBox", "0 0 " + (width + 20 + 20) + " " + (height + 10 + 10) )
+        .attr("preserveAspectRatio", "xMidYMid meet")
         .attr("width", width)
         .attr("height", height);
 

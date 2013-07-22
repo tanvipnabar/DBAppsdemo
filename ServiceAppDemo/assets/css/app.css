@@ -3,6 +3,13 @@
 	margin-bottom: 0em;
 }
 
+.inner-title {
+	background-color: #F2F2F2;
+	border-width: 0.1em;
+	border-top-left-radius: 0.5em;
+	border-top-right-radius: 0.5em;
+}
+
 .threshold-slider {
 	
 }
@@ -36,6 +43,16 @@
 .panel {
 	overflow: auto;
 	background-color: white;
+}
+
+.process-table {
+	border-collapse: separate;
+	border-spacing: 4px;
+	border-style: none;
+}
+
+td, th, tr {
+	border:1px solid lightgray;
 }
 
 
