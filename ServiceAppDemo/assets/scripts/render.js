@@ -1,6 +1,6 @@
 $(function() {
-    var width = 960,
-        height = 960;
+    var width = 800,
+        height = 480;
 
     var force = d3.layout.force()
         .gravity(.1)
@@ -8,7 +8,7 @@ $(function() {
         .charge(-1200)
         .size([width, height]);
 
-    var svg = d3.select("body").append("svg:svg")
+    var svg = d3.select("#components-graph").append("svg:svg")
         .attr("width", width)
         .attr("height", height);
 
@@ -45,7 +45,7 @@ $(function() {
             .attr("class", "node")
             .attr("r", 6)
             //.style("fill", function(d) { return color(d.group); })
-            .call(force.drag);
+            //.call(force.drag);
 
         node.append("image")
             .attr("xlink:href", "http://openiconlibrary.sourceforge.net/gallery2/open_icon_library-full/icons/png/32x32/devices/computer-6.png")

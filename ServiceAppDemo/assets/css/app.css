@@ -1,5 +1,6 @@
 .top-bar {
 	background-color: lightgray;
+	margin-bottom: 0em;
 }
 
 .threshold-slider {
@@ -10,5 +11,33 @@
 	color: blue !important;
 }
 
-#slider .ui-slider-range { background: #4797D0; }
-#slider .ui-slider-handle { border-color: #4797D0; }
+.hbase-panel {
+	border: 0em;
+}
+
+.process-health{
+	width:5%;
+}
+
+.green {
+	background:#94E13B;
+}
+
+.yellow {
+	background:#F6F967;
+}
+
+.process-details li{
+	font-style: italic;
+	list-style-type: none;
+	padding-left: 1em;
+}
+
+.panel {
+	overflow: auto;
+	background-color: white;
+}
+
+
+.threshold-slider .ui-slider-range { background: #4797D0; }
+.threshold-slider .ui-slider-handle { border-color: #4797D0; }
