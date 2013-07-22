@@ -5,6 +5,7 @@
 
 .inner-title {
 	background-color: #F2F2F2;
+	color: darkblue;
 	border-width: 0.1em;
 	border-top-left-radius: 0.5em;
 	border-top-right-radius: 0.5em;
@@ -15,7 +16,8 @@
 }
 
 .secondary-title {
-	color: blue !important;
+	color: darkblue !important; 
+	padding-left: 1em
 }
 
 .hbase-panel {
