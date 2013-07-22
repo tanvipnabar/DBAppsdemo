@@ -4,12 +4,24 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>DB Service App</title>
     <script type="text/javascript" src="assets/plugins/d3.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.2.1/underscore-min.js'></script>
+    <script type="text/javascript" src="assets/plugins/backbone.js"></script>
     <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?1.29.1"></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.2.1/underscore-min.js'></script>
-    <script type="text/javascript" src="assets/scripts/render.js"></script>
     <link href="assets/css/componentgraph.css" rel="stylesheet" type="text/css"/>
   </head>
   <body>
+<div id="process-container" style="position:absolute;overflow-y:auto">Click on a node to view process details</div>
+<div id="health-container" style="position:absolute;overflow-y:auto;right:5px">Adjust health parameters for a component</div>
+
+
+    <script src="assets/scripts/applications.js"></script>
+
+    <script>
+
+      initApplications()
+    </script>
+    <script type="text/javascript" src="assets/scripts/render.js"></script>
+
   </body>
 </html>

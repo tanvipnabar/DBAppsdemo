@@ -31,3 +31,32 @@ text.shadow {
   stroke-width: 3px;
   stroke-opacity: .8;
 }
+
+.node {
+  cursor: pointer;
+}
+.health0 {
+  fill: #CC3333;
+}
+
+.health1 {
+  fill: #CC9900;
+}
+
+.health2 {
+  fill: #279B61;
+}
+
+.node:hover {
+  fill: #5f5f5f;
+}
+
+#process-container {
+  background: #efefff;
+  padding: 5px;
+}
+
+#health-container {
+  background: #efffef;
+  padding: 5px;
+}
