@@ -1,12 +1,12 @@
 $(function() {
-    var width = 960,
-        height = 960;
+    var width = 600,
+        height = 600;
 
-    var force = d3.layout.force()
+    /*var force = d3.layout.force()
         .gravity(.1)
         .distance(100)
         .charge(-1200)
-        .size([width, height]);
+        .size([width, height]);*/
 
     var svg = d3.select("body").append("svg:svg")
         .attr("width", width)
@@ -18,7 +18,7 @@ $(function() {
       .enter().append("svg:marker")
         .attr("id", String)
         .attr("viewBox", "0 -5 10 10")
-        .attr("refX", 15)
+        .attr("refX", 10)
         .attr("refY", -1.5)
         .attr("markerWidth", 6)
         .attr("markerHeight", 6)
@@ -28,35 +28,33 @@ $(function() {
 
 
       d3.json("data/applications.json", function(graph, error) {
-        force
+        /*force
             .nodes(graph.nodes)
             .links(graph.links)
-            .start();
+            .start();*/
+
+
+
 
         var path = svg.append("svg:g").selectAll("path")
-            .data(force.links())
+            .data(graph.links)
           .enter().append("svg:path")
             .attr("class", "link")
             .attr("marker-end","url(#open)");
+            
 
         var node = svg.append("svg:g").selectAll("node")
-            .data(force.nodes())
-          .enter().append("g")
+            .data(graph.nodes)
+          .enter().append("circle")
             .attr("class", "node")
-            .attr("r", 6)
-            //.style("fill", function(d) { return color(d.group); })
-            .call(force.drag);
-
-        node.append("image")
-            .attr("xlink:href", "http://openiconlibrary.sourceforge.net/gallery2/open_icon_library-full/icons/png/32x32/devices/computer-6.png")
-            .attr("x", -10)
-            .attr("y", -10)
-            .attr("width", 20)
-            .attr("height", 20);
+            .attr("r", 5)
+            .style("fill", function(d) { return d.color; } )
+            //.attr("fill", "#FF0000")
+            //.call(force.drag);
 
 
         var text = svg.append("svg:g").selectAll("g")
-          .data(force.nodes())
+          .data(graph.nodes)
         .enter().append("svg:g");
 
       // A copy of the text with a thick white stroke for legibility.
@@ -73,19 +71,27 @@ $(function() {
             .text(function(d) { return d.name; });
 
       // Use elliptical arc path segments to doubly-encode directionality.
-        force.on("tick", function() {
+        /*force.on("tick", function() {
           path.attr("d", function(d) {
             var dx = d.target.x - d.source.x,
                 dy = d.target.y - d.source.y,
                 dr = Math.sqrt(dx * dx + dy * dy);
             return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
-          });
+          });*/
 
-          node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-
-          text.attr("transform", function(d) {
-            return "translate(" + d.x + "," + d.y + ")";
-          });
+        path.attr("d", function(d) {
+            var dx = graph.nodes[d.target].x - graph.nodes[d.source].x,
+                dy = graph.nodes[d.target].y - graph.nodes[d.source].y,
+                dr = Math.sqrt(dx * dx + dy * dy);
+            return "M" + graph.nodes[d.source].x + "," + graph.nodes[d.source].y + "A" + dr + "," + dr + " 0 0,1 " + graph.nodes[d.target].x + "," + graph.nodes[d.target].y;
         });
+        
+    //console.log(graph.nodes[0].name);
+      node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+      text.attr("transform", function(d) {
+        return "translate(" + d.x + "," + d.y + ")";
       });
     });
+});
+    

@@ -1,23 +1,23 @@
 {
   "nodes":[
-    {"name":"STREAMER"},
-    {"name":"DATABASE"},
-    {"name":"QUEUE"},
-    {"name":"AGGREGATOR"},
-    {"name":"WRITERS"},
-    {"name":"HBASE"},
-    {"name":"RESPONSE"},
-    {"name":"WEB"}
+    {"name":"STREAMER", "x":100, "y":300, "color":"green"},
+    {"name":"DATABASE", "x":100, "y":400, "color":"yellow"},
+    {"name":"QUEUE", "x":200, "y":300, "color":"yellow"},
+    {"name":"AGGREGATOR", "x":200, "y":400, "color":"green"},
+    {"name":"WRITERS", "x":200, "y":200, "color":"red"},
+    {"name":"HBASE", "x":300, "y":200, "color":"green"},
+    {"name":"RESPONSE", "x":400, "y":200, "color":"red"},
+    {"name":"WEB", "x":500, "y":200, "color":"green"}
   ],
   "links":[
-    {"source":0,"target":1},
-    {"source":1,"target":0},
-    {"source":0,"target":2},
-    {"source":2,"target":3},
-    {"source":3,"target":2},
-    {"source":2,"target":4},
-    {"source":4,"target":5},
-    {"source":5,"target":6},
-    {"source":6,"target":7}
+    {"source":0,"target":1, "color":"green"},
+    {"source":1,"target":0, "color":"yellow"},
+    {"source":0,"target":2, "color":"green"},
+    {"source":2,"target":3, "color":"yellow"},
+    {"source":3,"target":2, "color":"green"},
+    {"source":2,"target":4, "color":"red"},
+    {"source":4,"target":5, "color":"green"},
+    {"source":5,"target":6, "color":"yellow"},
+    {"source":6,"target":7, "color":"red"}
   ]
 }
