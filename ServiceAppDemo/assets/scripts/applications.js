@@ -87,7 +87,7 @@ function clicked(e) {
 			success: function(data) {
 				console.log(data);
 				$('#process-container').empty();
-				
+				$('#health-container').empty();
 				var componentData = components.get(e);
 				
 				//check for bad health
@@ -95,24 +95,21 @@ function clicked(e) {
 				//component name
 				$('#process-container').append('<h2>'+componentData.get('name')+'</h2>');
 				//HEALTH
-				$('#process-container').append('<p><b>Health: </b>'+components.get(e).get('health')+'</p>');
-				$('#process-container').append('<h3>Health parameters:</h3>');
+				$('#health-container').append('<p><b>Health: </b>'+components.get(e).get('health')+'</p>');
 				var healths = componentData.get('healthParams');
 				console.log(healths);
 				_.each(healths, function(param) {
 					console.log(param);
-					$('#process-container').append('<li>'+param['attribute']+' for process id: '+param['processID']+'<br>');
-					$('#process-container').append('lower threshold: '+param['lowThreshold']+'<br>');
-					$('#process-container').append('upper threshold: '+param['highThreshold']+'</li><br><br>');
+					$('#health-container').append('<li>'+param['attribute']+' for process id: '+param['processID']+'<br>');
+					$('#health-container').append('lower threshold: '+param['lowThreshold']+'<br>');
+					$('#health-container').append('upper threshold: '+param['highThreshold']+'</li><br><br>');
 				});
 				
 				//PROCESSES
-				$('#process-container').append('<h3>Processes:</h3>');
-
 				$.each(data, function(i, process) {
 					$('#process-container').append(
 	            '<section class="section" id="'+process['uid']+'">\
-	              <p class="title" id="title'+process['uid']+'"><a href="#">'+process['name']+'</a></p>\
+	              <p class="title" id="title'+process['uid']+'"><h4>'+process['name']+'</h4></p>\
 	              <div class="content" data-slug="panel1">\
 	              <ul class="no-disc"></ul></div>\
 	            </section>'					
