@@ -1,0 +1,14 @@
+.top-bar {
+	background-color: lightgray;
+}
+
+.threshold-slider {
+	
+}
+
+.secondary-title {
+	color: blue !important;
+}
+
+#slider .ui-slider-range { background: #4797D0; }
+#slider .ui-slider-handle { border-color: #4797D0; }
