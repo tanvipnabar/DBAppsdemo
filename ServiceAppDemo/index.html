@@ -15,19 +15,37 @@
 
   <!-- If you are using the gem version, you need this only -->
 
+<<<<<<< HEAD
 <script src="assets/plugins/foundation-4/js/vendor/custom.modernizr.js"></script>
   <script type="text/javascript" src="assets/plugins/d3.js"></script>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.2.1/underscore-min.js'></script>
   <script type="text/javascript" src="assets/plugins/backbone.js"></script>
   <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?1.29.1"></script>
   <link href="assets/css/componentgraph.css" rel="stylesheet" type="text/css"/>
+=======
+
+>>>>>>> tanvitest
 </head>
 <body>
+  <div class="row">
+  <div class="large-12 columns">
 
   <!-- body content here -->
-
+    <nav class="top-bar outer-title" style="overflow: auto;">
+      <ul class="title-area">
+        <!-- Title Area -->
+        <li class="name">
+          <h1 class="secondary-title">Deutsche Bank</h1>
+        </li>
+      </ul>
+      <ul>
+        <img src="assets/images/dblogo.png" style="float:right;">
+      </ul>
+    </nav>
+<div class="row">
+  <div class="large-12 columns">
   <div class="panel radius">
-    <nav class="top-bar">
+    <nav class="top-bar outer-title">
       <ul class="title-area">
         <!-- Title Area -->
         <li class="name">
@@ -38,37 +56,36 @@
     <div class="row">
       <div class="large-12 columns">
           <div class="panel radius">
-            <nav class="top-bar">
+            <nav class="top-bar inner-title">
               <ul class="title-area">
                 <!-- Title Area -->
                 <li class="name">
-                  <h1><a href="#" class="secondary-title">System Name</a></h1>
+                  <h1 class="secondary-title">System Name</h1>
                 </li>
               </ul>
             </nav>
+<<<<<<< HEAD
             <div class="panel" id="node-graph" style="height:35em">
               <small style="position:absolute;bottom:50px;right:50px">use your mouse to drag and zoom around the graph</small><!-- Graph goes here -->
+=======
+            <div class="panel" id="components-graph">
+>>>>>>> tanvitest
             </div>
-          </div>
-      </div>
-    </div>
     <!--<div class="panel">
         <div id="slider" class="threshold-slider"></div>
     </div>-->
     
-    <div class="row">
-      <div class="large-12 columns">
-        <div class="panel radius">
-          <nav class="top-bar">
+          <nav class="top-bar inner-title">
             <ul class="title-area">
               <!-- Title Area -->
               <li class="name">
-                <h1><a href="#" class="secondary-title">HBase</a></h1>
+                <h1 class="secondary-title">HBase</h1>
               </li>
             </ul>
           </nav>
-          <section style="height:20em">
+          <div class="panel">
             <div class="large-12 columns">
+<<<<<<< HEAD
               <div class="panel large-6 columns">
                 <h4>Processes</h4>
                 <div id="process-container"></div>
@@ -76,44 +93,100 @@
               <div class="panel large-6 columns">
                   <h4>Health Parameters</h4>
                   <div id="health-container"></div>                    
-              </div>
-            </div>
-          </section>
-        </div>
-          
-      </div>
-    </div>
-  </div>
+=======
+              <div class="panel large-6 columns hbase-panel">
+                <p>
+                  <img src="assets/images/process.png">
+                  <strong>
+                    Processes
+                  </strong>
+                </p>
+                <table class="process-table">
+                  <tr>
+                    <td class="process-health green"></td>
+                    <td>
+                      <strong>Process 1</strong>
+                      <ul class="process-details">
+                        <li>Process 1 details</li>
+                        <li>Process 1 details</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="process-health yellow"></td>
+                    <td>
+                      <strong>Process 2</strong>
+                      <ul class="process-details">
+                        <li>Process 2 details</li>
+                        <li>Process 2 details</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="process-health green"></td>
+                    <td>
+                      <strong>Process 3</strong>
+                      <ul class="process-details">
+                        <li>Process 3 details</li>
+                        <li>Process 3 details</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="process-health green"></td>
+                    <td>
+                      <strong>Process 4</strong>
+                      <ul class="process-details">
+                        <li>Process 4 details</li>
+                        <li>Process 4 details</li>
+                      </ul>
+                    </td>
+                  </tr>
+                </table>
+                <footer class="row" style="float:right; padding-right:1em;"><a href="#"><img src="assets/images/arrow_down.png"></a></footer>
 
-  <!--
-  <div class="row">
-      <div class="large-12 columns">
-        <div class="panel radius">
-          <nav class="top-bar">
-            <ul class="title-area">
-              <!-- Title Area 
-              <li class="name">
-                <h1><a>Service App</a></h1>
-              </li>
-            </ul>
-          </nav>
-          <div class="large-12 columns">
-            <div class="panel large-6 columns">
-              blah
-            </div>
-            <div class="panel large-6 columns">
-              blah
+
+              </div>
+              <div class="panel large-6 columns hbase-panel">
+                <p>
+                  <img src="assets/images/health.png">
+                  <strong>
+                    Health Parameters
+                  </strong>
+                </p>
+                <p>
+                  <div class="panel hbase-panel">
+                    <p>
+                      Memory
+                      <div class="threshold-slider"></div>
+                    </p>
+                  </div>
+                  <div class="panel hbase-panel">
+                    <p>
+                      CPU
+                      <div class="threshold-slider"></div>
+                    </p>
+                  </div>
+                  <div class="panel hbase-panel">
+                    <p>
+                      Average Response Time
+                      <div class="threshold-slider"></div>
+                    </p>
+                  </div>
+                </p>
+                <footer class="row" style="float:left; padding-left:1em"><a href="#"><img src="assets/images/add.png">&nbspAdd Parameter...</a></footer>
+>>>>>>> tanvitest
+              </div>
+          
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
--->
-
-
-
-
+</div>
+</div>
+</div>
 
 
   <script>
@@ -146,13 +219,23 @@
   <script src="assets/plugins/foundation-4/js/foundation/foundation.tooltips.js"></script>
   <script src="assets/plugins/foundation-4/js/foundation/foundation.topbar.js"></script>
   <script src="assets/plugins/foundation-4/js/foundation/foundation.interchange.js"></script>
+  <script type="text/javascript" src="assets/plugins/d3.js"></script>
+  <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?1.29.1"></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.2.1/underscore-min.js'></script>
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<<<<<<< HEAD
+=======
+  <link href="assets/css/app.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="assets/scripts/render.js"></script>
+  <link href="assets/css/componentgraph.css" rel="stylesheet" type="text/css"/>
+>>>>>>> tanvitest
   <script>
     $(function() {
-      $("#slider").slider({
+      $(".threshold-slider").slider({
         value:"40",
         range:"min",
         animate:true,
@@ -161,6 +244,7 @@
   });
   </script>
 </body>
+<<<<<<< HEAD
 </html>
 
 
@@ -187,3 +271,6 @@
   </body>
 </html>
 -->
+=======
+</html>
+>>>>>>> tanvitest

@@ -1,14 +1,27 @@
+<<<<<<< HEAD
 function drawGraph() {
     var width = $('#node-graph').width(),
         height = $('#node-graph').height();
+=======
+$(function() {
+    var width = 800,
+        height = 480;
+>>>>>>> tanvitest
 
     var force = d3.layout.force()
         .gravity(.05)
         .distance(200)
         .charge(-500)
         .size([width, height]);
+<<<<<<< HEAD
 
     var svg = d3.select("#node-graph").append("svg:svg")
+=======
+        
+    var svg = d3.select("#components-graph").append("svg:svg")
+        .attr("viewBox", "0 0 " + (width + 20 + 20) + " " + (height + 10 + 10) )
+        .attr("preserveAspectRatio", "xMidYMid meet")
+>>>>>>> tanvitest
         .attr("width", width)
         .attr("height", height)
         .attr("pointer-events", "all")
@@ -77,10 +90,14 @@ function drawGraph() {
                 clicked(d.id)
             })
             //.style("fill", function(d) { return color(d.group); })
+<<<<<<< HEAD
             .attr("title", function (d) {
                 return (d.name)
             })
             .call(force.drag);
+=======
+            //.call(force.drag);
+>>>>>>> tanvitest
 
         /*node.append("image")
             .attr("xlink:href", "http://openiconlibrary.sourceforge.net/gallery2/open_icon_library-full/icons/png/32x32/devices/computer-6.png")
