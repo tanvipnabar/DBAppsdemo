@@ -19,9 +19,10 @@ var initApplications = function() {
 		crossDomain: true,
 		success: function(data) {
 			window.components = new Components();
+			window.componentsView = new ComponentsView({collection: components});
 			var counter = 0;
 			_.each(data, function(app) {
-				if (counter < 80) {
+				if (counter < 30) {
 					var application = new Application(app);
 					allApplications.add(application);
 					//console.log(application);
@@ -46,27 +47,39 @@ var Component = Backbone.Model.extend({
 		name: 'component name',
 		health: 2,
 		healthParams: [	{
-											processID: 123,
+											processID: "996_29233_12995843702000000",
 											attribute: "cpu",
-											lowThreshold: 20,
-											highThreshold: 80
+											lowThreshold: 0.55,
+											highThreshold: 0.92
 										},
 										{
-											processID: 456,
+											processID: "996_29242_12995843702000000",
 											attribute: "memory",
-											lowThreshold: 1400000,
-											highThreshold: 2000000
+											lowThreshold: 50067070,
+											highThreshold: 70067070
 										}
 		]
 	}
-})
+});
+
+var ComponentsView = Backbone.View.extend({
+	el: $('#healthvalue'),
+	initialize: function() {
+    this.collection.bind('change', this.render, this);
+	},
+	render: function(e) {
+		alert(e.get('health'));
+		$(this.el).html(e.get('health'));
+	}
+});
+
 
 var Components = Backbone.Collection.extend({
 	model: Component
 })
 
 function clicked(e) {
-	console.log(e);
+	//console.log(e);
 		$.ajax({
 			url: "https://wwws.appfirst.com/api/v3/applications/"+e+"/processes",
 			dataType: "jsonp",
@@ -77,11 +90,12 @@ function clicked(e) {
 				
 				var componentData = components.get(e);
 				
+				//check for bad health
+				setHealth(componentData);
 				//component name
 				$('#process-container').append('<h2>'+componentData.get('name')+'</h2>');
-				
 				//HEALTH
-				$('#process-container').append('<p><b>Health: </b>'+componentData.get('health')+'</p>');
+				$('#process-container').append('<p><b>Health: </b>'+components.get(e).get('health')+'</p>');
 				$('#process-container').append('<h3>Health parameters:</h3>');
 				var healths = componentData.get('healthParams');
 				console.log(healths);
@@ -91,7 +105,7 @@ function clicked(e) {
 					$('#process-container').append('lower threshold: '+param['lowThreshold']+'<br>');
 					$('#process-container').append('upper threshold: '+param['highThreshold']+'</li><br><br>');
 				});
-
+				
 				//PROCESSES
 				$('#process-container').append('<h3>Processes:</h3>');
 
@@ -114,20 +128,17 @@ function clicked(e) {
 
 function processData(theuid) {
 	var url = "https://wwws.appfirst.com/api/processes/"+theuid+"/data/";
+	console.log(theuid)
 	$.ajax({
 		url: url,
 		dataType: "jsonp",
 		crossDomain: true,
 		success: function(data) {
-			//console.log(data);
 			$.each(data, function(i, details) {
-				//console.log(details);
 				_.each(details, function(i, datt) {
 					$('#'+theuid+' .content ul').append('<li><b>'+datt+': </b>'+details[datt]+'</li>');
 				});
-				//$('#'+theuid+' .content ul').append('<li><b>CPU: </b>'+details['cpu']+'</li>');
-				//$('#'+theuid+' .content ul').append('<li><b>Memory: </b>'+details['memory']+'</li>');
-				//$('#'+theuid+' .content ul').append('<li><b>Page faults: </b>'+details['page_faults']+'</li>');
+
 			});
 		},
 		error: function(e) {
@@ -135,3 +146,30 @@ function processData(theuid) {
 		}
 	});
 }	
+
+
+
+function setHealth(component) {
+	var params = component.get('healthParams');
+	_.each(params, function(param) {
+		var url = "https://wwws.appfirst.com/api/processes/"+param['processID']+"/data/";
+		$.ajax({
+			url: url,
+			dataType: "jsonp",
+			crossDomain: true,
+			success: function(theProcess) {
+				var currentLevel = theProcess[0][param['attribute']];
+				console.log('this should come before healthlevel');
+				if (currentLevel > param['lowThreshold']) {
+					component.set({health: 1});
+				}
+				if (currentLevel > param['highThreshold']) {
+					component.set({health: 1});
+				}
+			},
+			error: function(e) {
+				console.log(e);
+			}
+		});
+	});
+}

@@ -10,11 +10,17 @@
   <!-- If you are using CSS version, only link these 2 files, you may add app.css to use for your overrides if you like. -->
   <link rel="stylesheet" href="assets/plugins/foundation-4/css/normalize.css" />
   <link rel="stylesheet" href="assets/plugins/foundation-4/css/foundation.css" />
+  <link href="assets/css/app.css" rel="stylesheet" type="text/css"/>
+
 
   <!-- If you are using the gem version, you need this only -->
 
-  <script src="assets/plugins/foundation-4/js/vendor/custom.modernizr.js"></script>
-
+<script src="assets/plugins/foundation-4/js/vendor/custom.modernizr.js"></script>
+  <script type="text/javascript" src="assets/plugins/d3.js"></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.2.1/underscore-min.js'></script>
+  <script type="text/javascript" src="assets/plugins/backbone.js"></script>
+  <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?1.29.1"></script>
+  <link href="assets/css/componentgraph.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 
@@ -40,8 +46,8 @@
                 </li>
               </ul>
             </nav>
-            <div class="panel" style="height:20em">
-              Graph goes here
+            <div class="panel" id="node-graph" style="height:35em">
+              <small style="position:absolute;bottom:50px;right:50px">use your mouse to drag and zoom around the graph</small><!-- Graph goes here -->
             </div>
           </div>
       </div>
@@ -121,6 +127,16 @@
   ('__proto__' in {} ? 'assets/plugins/foundation-4/js/vendor/zepto' : 'js/vendor/jquery') +
   '.js><\/script>')
   </script>
+
+
+  <script src="assets/scripts/applications.js"></script>
+
+  <script>
+
+    initApplications()
+  </script>
+  <script type="text/javascript" src="assets/scripts/render.js"></script>
+
   <script src="assets/plugins/foundation-4/js/foundation/foundation.js"></script>
   <script src="assets/plugins/foundation-4/js/foundation/foundation.alerts.js"></script>
   <script src="assets/plugins/foundation-4/js/foundation/foundation.clearing.js"></script>
@@ -140,7 +156,6 @@
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-  <link href="assets/css/app.css" rel="stylesheet" type="text/css"/>
   <script>
     $(function() {
       $("#slider").slider({
@@ -173,13 +188,7 @@
 <div id="health-container" style="position:absolute;overflow-y:auto;right:5px">Adjust health parameters for a component</div>
 
 
-    <script src="assets/scripts/applications.js"></script>
 
-    <script>
-
-      initApplications()
-    </script>
-    <script type="text/javascript" src="assets/scripts/render.js"></script>
 
   </body>
 </html>
