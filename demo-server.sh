@@ -17,6 +17,6 @@ fi
 
 echo "Starting local http server (ctrl-c to exit)"
 echo ""
-echo "  D3:        http://127.0.0.1:$PORT/DBAppsdemo/ServiceAppDemo/"
+echo "  D3:        http://127.0.0.1:$PORT/DBSAdemo/ServiceAppDemo/"
 echo ""
 python -m SimpleHTTPServer $PORT
